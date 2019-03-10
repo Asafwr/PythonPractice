@@ -71,3 +71,46 @@ def list_sum():
     for n in numbers:
         sum += int(n)
     print('The total sum of the numbers in the serie you entered is ' + str(sum))
+
+
+# Exercise No. 3- Check winner in a Tic Tac Toe game
+# Receives matrix as an argument
+# NOTE: Function is generic and can handle a board of any size
+def tic_tac_toe(mat):
+    dimension = len(mat)
+    # Used to check diagonals
+    main_diagonal_val = mat[0][0]
+    main_diagonal_ok = True
+    sec_diagonal_val = mat[0][dimension - 1]
+    sec_diagonal_ok = True
+
+    # Checks whether all cells in a row, a column or a diagonal are equal
+    for i in range(dimension):
+        # Checks diagonals
+        if mat[i][i] != main_diagonal_val:  # Checks main diagonal
+            main_diagonal_ok = False
+
+        if mat[dimension - i][i] != sec_diagonal_val:
+            main_diagonal_ok = False
+
+        # Checks rows and columns
+        row_val = mat[i][0]  # Used to check row
+        row_ok = True
+        col_val = mat[0][i]  # Used to check column
+        col_ok = True
+        # Goes through row / col
+        for j in range(dimension):
+            if mat[i][j] != row_val:
+                row_ok = False
+            if mat[j][i] != col_val:
+                col_ok = False
+        if row_ok:
+            return row_val
+        if col_ok:
+            return col_val
+
+    if main_diagonal_ok:
+        return main_diagonal_val
+    if sec_diagonal_ok:
+        return sec_diagonal_val
+    return -1

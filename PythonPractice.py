@@ -171,13 +171,23 @@ def useless_func(x):
 # Receives a function, and returns a memoized decorator which saves results
 # in a cache memory to avoid repetition of previous calculations.
 def decorator(func):
-    cache = dict()
+    cache = dict()  # Creates cache (empty dict)
 
     def memoize(*args):  # Decorator for function
         if args in cache:  # If function was already called with these parameters
-            return cache[args]
+            return cache[args]  # Returns saved call
         result = func(*args)  # Calculating result
-        cache[args] = result
+        cache[args] = result  # Updates cache
         return result
 
     return memoize
+
+
+# Example function to check Ex. 7
+# Receives NUM and returns the NUMth Fibonacci element
+def example(num):
+    if num == 0:
+        return 0
+    if num == 1:
+        return 1
+    return example(num - 1) + example(num - 2)

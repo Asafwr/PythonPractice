@@ -114,3 +114,23 @@ def tic_tac_toe(mat):
     if sec_diagonal_ok:
         return sec_diagonal_val
     return -1
+
+
+# Exercise No. 4- String compression
+# Receives a string and returns a compressed string, where every character that repeats
+# itself more than 3 times is compressed into: @[CHAR][COUNT] (ex: aaaa -> @4a)
+# NOTE: Supports compression of string containing both letters and digits
+def compress_str(string):
+    new_str = ''
+    count = 0
+    prev = chr(0)  # Always contains previous character
+    for ch in string:  # Iterates through all chars in string
+        if ch == prev:  # If character is the same as before updates count
+            count += 1
+        else:
+            if count > 3:
+                new_str += '@' + prev + count
+            else:
+                new_str += count * prev
+            prev = ch  # Updates prev
+    return new_str

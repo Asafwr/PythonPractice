@@ -1,5 +1,6 @@
 import getpass
 import msvcrt
+from math import sqrt
 
 # GLOBALS AND CONSTANTS
 ATM_CODE = '7624'  # Secret access code to the ATM exercise
@@ -158,3 +159,9 @@ def valid_digit(id_num):
 # Calls a received method for each element in a received list
 def map_func(ls, func):
     return [func(element) for element in ls]
+
+
+# Auxiliary method for Ex. 6
+# Used to check the function in exercise 6
+def useless_func(x):
+    return (x**2 - sqrt(x)) / x

@@ -134,3 +134,21 @@ def compress_str(string):
                 new_str += count * prev
             prev = ch  # Updates prev
     return new_str
+
+
+# Exercise No. 5- Checking the validation digit of an Israeli ID
+# Returns True is check digit is valid or False otherwise
+def valid_digit(id_num):
+    # If ID number is not 9 chars long or no a number
+    if len(id_num) != 9 or not id_num.isdigit() :
+        return False
+
+    num = 0
+    # First part - sums up all digits as in: d1 * 1 + d2 * 2 + d3 * 1 + d4 * 2 +...
+    for i in range(8):
+        temp = int(id_num[i]) * (1 + i % 2)
+        temp = int(temp / 10) + temp % 10 if temp > 9 else temp
+        num += temp
+
+    # Seconds part- finds the difference from the closest product of ten
+    return (num + int(id_num[8])) % 10 == 0

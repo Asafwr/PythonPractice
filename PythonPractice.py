@@ -152,3 +152,9 @@ def valid_digit(id_num):
 
     # Seconds part- finds the difference from the closest product of ten
     return (num + int(id_num[8])) % 10 == 0
+
+
+# Exercise No. 6- Map function
+# Calls a received method for each element in a received list
+def map_func(ls, func):
+    return [func(element) for element in ls]

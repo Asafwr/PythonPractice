@@ -165,3 +165,19 @@ def map_func(ls, func):
 # Used to check the function in exercise 6
 def useless_func(x):
     return (x**2 - sqrt(x)) / x
+
+
+# Exercise No. 7- Decorator Cache
+# Receives a function, and returns a memoized decorator which saves results
+# in a cache memory to avoid repetition of previous calculations.
+def decorator(func):
+    cache = dict()
+
+    def memoize(*args):  # Decorator for function
+        if args in cache:  # If function was already called with these parameters
+            return cache[args]
+        result = func(*args)  # Calculating result
+        cache[args] = result
+        return result
+
+    return memoize
